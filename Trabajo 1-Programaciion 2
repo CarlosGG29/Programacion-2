@@ -1,0 +1,96 @@
+from math import sqrt
+def menu():
+  print("-------------------------")
+  print("ESCOGE LA OPCION DESEADA")
+  print("-------------------------")
+  print("1. Lista de numeros organizada")
+  print("2. Operaciones de dos numeros")
+  print("3. Serie de Fibonacci")
+  print("4. Conteo de Caracteres")
+  print("9. Salir")
+
+def listaNumeros():
+  vecNum = [0] 
+  seguir=int(0)
+  seguir=int(input("¿Desea agregar numeros? 1=si, 2=no ----> "))
+  while(seguir==1):
+    nro=int(input("Ingrese el nuemro que desea agregar: "))
+    vecNum.append(nro)
+    vecNum.sort()
+    vecNum.reverse() 
+    seguir=int(input("¿Desea agregar numeros? 1=si, 2=no ----> "))
+  print(vecNum)
+  avanzar=str(input("De enter para continuar : "))
+
+def operacionesNumeros():
+  print("OPERACIONES CON DOS NUMEROS INGRESADOS")
+  nr1=int(0)
+  nr2=int(0)
+  suma=int(0)
+  resta=int(0)
+  multi=int(0)
+  divi=float(0.0)
+  nr1=int(input("Ingrese el primero numero----> "))
+  nr2=int(input("Ingrese el segundo numero----> "))
+  suma=nr1+nr2
+  resta=nr1-nr2
+  multi=nr1*nr2
+  if (nr2!=0):
+    divi=nr1/nr2
+  else:
+    print("No se pudo realizar la division")
+  print(suma)
+  print(resta)
+  print(multi)
+  print(divi)
+  avanzar=str(input("De enter para continuar : "))
+
+def serieFibonacci():
+  print("SERIE DE FIBONACCI")
+  num=int(0)
+  num=int(input("Ingrese un numero para realizar la serie----> "))
+  vecFibo = []
+  for i in range (1,num):
+    fibo=int(((1+sqrt(5))**i-(1-sqrt(5))**i)/(2**i*sqrt(5)))
+    if (fibo<num):
+      vecFibo.append(fibo)
+
+  print("Lista de los numeros dentro de secuencia de Fibonacci menores a",num," : ",vecFibo)
+  avanzar=str(input("De enter para continuar : ")) 
+
+def conteoCaracteres():
+  alf="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(',')
+  list_cont = []
+  
+  frase = input("Ingrese una frase: ")
+
+  for i in range(0,len(alf)):
+    for j, char in enumerate(frase):
+      if(char == alf[i]):
+        list_cont.append(alf[i])
+    cont = list_cont.count(alf[i]) 
+    if cont != 0:
+      print(f'La {alf[i]} aparece {cont} veces')
+  
+
+opcion=int(0)
+menu()
+opcion=int(input("Que opcion desea o 9 para salir : "))
+while (opcion!=9):
+  if (opcion==1):
+    listaNumeros()
+  else:
+    if (opcion==2):
+      operacionesNumeros()
+    else:
+      if(opcion==3):
+        serieFibonacci()
+      else:
+        if (opcion==4):
+          conteoCaracteres()
+        else:
+          print("Opcion No Valida")
+  menu()
+  opcion=int(input("Que opcion desea o 9 para salir : "))
+
+
